@@ -1,9 +1,16 @@
 .div-search{
-    display: flex;
     justify-content: space-between;
     background-color: rgb(227, 231, 233);
 }
 
 .input-size{
     height: 5%;
+}
+
+.ad{
+    background-color: blue;
+}
+
+.ad1{
+    background-color: brown;
 }
