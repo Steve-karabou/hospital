@@ -14,3 +14,8 @@
 .ad1{
     background-color: brown;
 }
+
+ul{
+ display: flex;
+ justify-content: end;
+}

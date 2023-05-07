@@ -26,48 +26,31 @@
               <th>Sexe</th>
               <th>Mobile</th>
               <th>Email</th>
+              <th>Date</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>13</td>
-              <td>Homme</td>
-              <td>22893322306</td>
-              <td>john@example.com</td>
+            <tr *ngFor="let patient of patients?.docs">
+              <td>{{patient.lastName}}</td>
+              <td>{{patient.firstName}}</td>
+              <td>{{patient.age}}</td>
+              <td>{{patient.sex}}</td>
+              <td>{{patient.mobile}}</td>
+              <td>{{patient.email}}</td>
+              <td>{{patient.createdAt | date:"dd/MM/yyy" }}</td>
               <td>
                 <button class="btn btn-primary me-2"><i class="bi bi-pencil-square"></i></button>
                 <button class="btn btn-danger" ><i class="bi bi-trash"></i></button>
               </td>
             </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>13</td>
-              <td>Homme</td>
-              <td>22893322306</td>
-              <td>john@example.com</td>
-              <td>
-                <button class="btn btn-primary me-2"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>13</td>
-              <td>Homme</td>
-              <td>22893322306</td>
-              <td>john@example.com</td>
-              <td>
-                <button class="btn btn-primary me-2"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
           </tbody>
         </table>
+        <ul class="nav nav-pills">
+          <li *ngFor="let item of [].constructor(this.totalPages); let i= index">
+            <a (click)="gotoPage(i+1)" [ngClass]="i+1 === currentPage?'btn-primary':'btn-outline-primary'" class="btn  ms-1 mt-1">{{i+1}}</a> 
+          </li>
+        </ul>
       </div>
     </div>
   </div>
