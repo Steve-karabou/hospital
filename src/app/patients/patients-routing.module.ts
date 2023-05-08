@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DisplayPatientsComponent } from './display-patients/display-patients.component';
+import { CreatePatientsComponent } from './create-patients/create-patients.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  {path:'', component: DisplayPatientsComponent},
+  {path:'newPatient', component: CreatePatientsComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

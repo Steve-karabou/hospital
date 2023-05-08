@@ -12,7 +12,7 @@ import { PatientsModule } from './patients/patients.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PatientsModule
+    PatientsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

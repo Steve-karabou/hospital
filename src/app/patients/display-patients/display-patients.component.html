@@ -4,14 +4,16 @@
     </div>
     <div class="div-search border py-2 mt-2 mb-1">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3"> 
+         <form [formGroup]="searchFormGroup"> 
           <div class="input-group input-size ms-2">
-            <input type="text" class="form-control" placeholder="Recherche"  aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+            <input type="text" class="form-control" placeholder="Recherche" formControlName="name" aria-describedby="button-addon2">
+            <button class="btn btn-primary" [disabled]="searchFormGroup.invalid"  type="submit" (click)="handleSearchProducts()" id="button-addon2"><i class="bi bi-search"></i></button>
           </div>
+        </form>  
         </div>
         <div class="d-flex justify-content-end col-4 offset-md-5">
-          <button class="btn btn-primary me-2" type="button"><i class="bi bi-person-plus-fill"></i>Ajouter un patient</button>
+          <button class="btn btn-primary me-2" type="button" (click)="newPatient()"><i class="bi bi-person-plus-fill"></i>Ajouter un patient</button>
         </div>
       </div>
     </div>
@@ -31,7 +33,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let patient of patients?.docs">
+            <tr *ngFor="let patient of patients">
               <td>{{patient.lastName}}</td>
               <td>{{patient.firstName}}</td>
               <td>{{patient.age}}</td>
@@ -46,7 +48,7 @@
             </tr>
           </tbody>
         </table>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" *ngIf="this.totalPages">
           <li *ngFor="let item of [].constructor(this.totalPages); let i= index">
             <a (click)="gotoPage(i+1)" [ngClass]="i+1 === currentPage?'btn-primary':'btn-outline-primary'" class="btn  ms-1 mt-1">{{i+1}}</a> 
           </li>

@@ -14,11 +14,14 @@ export class PatientService {
   constructor(private http: HttpClient) { }
 
    public getAllPatients(): Observable<Docs[]>{
-    console.log(`${this.apiUrl}/patient`)
     return this.http.get<Docs[]>(`${this.apiUrl}/patient`);
    }
 
    public getPaginationPatients(page: number, size: number): Observable<Patient>{
      return this.http.get<Patient>(`${this.apiUrl}/patient/paginate?page=${page}&size=${size}`) 
+   }
+
+   public searchPatient(name: string, page: number, size: number): Observable<Patient>{
+    return this.http.get<Patient>(`${this.apiUrl}/patient/search?name=${name}&page=${page}&size=${size}`)
    }
 }
