@@ -1,0 +1,62 @@
+<form class="row g-3" [formGroup]="patientFormGroup">
+    <div class="col-md-6">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" placeholder="nom" class="form-control" formControlName="lastName" id="nom" aria-label="First name">
+      <small class="text-danger" *ngIf="patientFormGroup.controls['lastName'].errors && patientFormGroup.controls['lastName'].touched">
+        {{ this.patientServ.getErrorMessage("Nom", patientFormGroup.controls['lastName'].errors)}}
+      </small>
+    </div>
+    <div class="col-md-6">
+      <label for="prenom" class="form-label">Prénom</label>
+      <input type="text" placeholder="prénom" formControlName="firstName" class="form-control" id="prenom">
+      <small class="text-danger" *ngIf="patientFormGroup.controls['firstName'].errors && patientFormGroup.controls['firstName'].touched">
+        {{ this.patientServ.getErrorMessage("Prénom", patientFormGroup.controls['firstName'].errors)}}
+      </small>
+    </div>
+    <div class="col-md-6">
+        <label for="nom" class="form-label">Genre</label>
+        <select class="form-select" formControlName="sex" aria-label=".form-select-lg example">
+          <option value="Féminin">Féminin</option>
+          <option value="Masculin">Masculin</option>
+        </select>
+        <small class="text-danger" *ngIf="patientFormGroup.controls['sex'].errors && patientFormGroup.controls['sex'].touched">
+          {{ this.patientServ.getErrorMessage("Genre", patientFormGroup.controls['sex'].errors)}}
+        </small> 
+    </div>
+    <div class="col-md-6">
+      <label for="age" class="form-label">Âge</label>
+      <input type="number" formControlName="age" placeholder="age" class="form-control" id="age">
+      <small class="text-danger" *ngIf="patientFormGroup.controls['age'].errors && patientFormGroup.controls['age'].touched">
+        <p *ngIf="patientFormGroup.controls['age'].errors['required']">
+          {{ this.patientServ.getErrorMessage("Âge", patientFormGroup.controls['age'].errors)}}
+        </p>
+        <p *ngIf="patientFormGroup.controls['age'].errors['pattern']">
+          {{ this.patientServ.getErrorMessage("Âge", patientFormGroup.controls['age'].errors)}} nombre positif;
+        </p>
+      </small>
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" formControlName="email" placeholder="email" class="form-control" id="email">
+      <small class="text-danger" *ngIf="patientFormGroup.controls['email'].errors && patientFormGroup.controls['email'].touched">
+        <p *ngIf="patientFormGroup.controls['email'].errors['required']">
+          {{ this.patientServ.getErrorMessage("Email", patientFormGroup.controls['email'].errors)}}
+        </p>
+        <p *ngIf="patientFormGroup.controls['email'].errors['pattern']">
+          {{ this.patientServ.getErrorMessage("Email", patientFormGroup.controls['email'].errors)}} nombre positif;
+        </p>
+      </small> 
+    </div>
+    <div class="col-md-6">
+      <label for="mobile" class="form-label">Numéro de téléphone</label>
+      <input type="tel" formControlName="mobile" placeholder="Exemple: 90-32-03-06" class="form-control" id="mobile">
+      <small class="text-danger" *ngIf="patientFormGroup.controls['mobile'].errors && patientFormGroup.controls['mobile'].touched">
+        {{ this.patientServ.getErrorMessage("Numéro de téléphone", patientFormGroup.controls['mobile'].errors)}}
+      </small>
+    </div>
+    
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary"
+       [disabled]="patientFormGroup.invalid" (click)="onSubmit()">Enregistrer</button>
+    </div>
+  </form>

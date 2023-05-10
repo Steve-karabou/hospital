@@ -72,7 +72,11 @@ export class DisplayPatientsComponent implements OnInit{
   }
 
   public newPatient(): void{
-   this.router.navigateByUrl("/newPatient")
+   this.router.navigateByUrl("/newPatient");
+  }
+
+  public editPatient(id: String): void{
+   this.router.navigateByUrl("/editPatient/"+id);
   }
 
 }
