@@ -79,4 +79,20 @@ export class DisplayPatientsComponent implements OnInit{
    this.router.navigateByUrl("/editPatient/"+id);
   }
 
+  public deletePatient(id: String): void{
+    console.log(id,"id")
+    let conf = confirm("Voulez-vous supprimer le patient");
+    if(conf){
+      this.patientServ.deletePatient(id).subscribe({
+        next: ()=>{
+          this.getPagePatients();
+          alert("Patient supprimer");
+        },
+        error: ()=>{
+          alert("Echec de la suppression")
+        }
+      })
+    }
+  }
+
 }

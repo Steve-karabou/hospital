@@ -1,5 +1,5 @@
 export default interface Docs{
-    id: String
+    _id: String
     lastName: String,
     firstName: String,
     age: number,

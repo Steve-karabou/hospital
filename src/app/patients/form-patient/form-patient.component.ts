@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../services/patient.service';
 import Docs from '../interface/docs';
@@ -12,6 +12,7 @@ export class FormPatientComponent implements OnInit {
 
   patientFormGroup!: FormGroup;
   @Output() patientFormSubmit : EventEmitter<Docs> = new EventEmitter();
+  @Input() patient!: Docs;
   
   constructor(private fb: FormBuilder, public patientServ: PatientService){}
 

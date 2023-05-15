@@ -3,6 +3,6 @@
       Modifier les Informations du Patient
     </div>
     <div class="card-body">
-      <app-form-patient></app-form-patient>
+      <app-form-patient [patient]="patient" (patientFormSubmit)="onSubmit($event)"></app-form-patient>
     </div>
   </div>
